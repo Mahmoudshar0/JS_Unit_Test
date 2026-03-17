@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Mocha Browser Tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+
+  <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+  <script type="module" class="mocha-init">
+    import { expect } from 'https://cdn.jsdelivr.net/npm/chai@5.1.1/+esm'
+    // 3. Setup Mocha to use the BDD interface (describe/it)
+    mocha.setup('bdd');
+    // 4. Make 'expect' globally available like it is in Node
+    window.expect = expect;
+  </script>
+
+  <script type="module" src="./test/index.test.js"></script>
+
+  <script class="mocha-exec" type="module">
+    // 6. Run the tests
+    mocha.run();
+  </script>
+</body>
+</html>
